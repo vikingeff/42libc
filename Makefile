@@ -6,16 +6,15 @@
 #    By: gleger <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 17:36:06 by gleger            #+#    #+#              #
-#    Updated: 2013/11/25 19:58:45 by gleger           ###   ########.fr        #
+#    Updated: 2013/11/25 18:54:45 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-NAME = pouet
+NAME = libft.a
 FLAGS = -Wall -Wextra -Werror -I./
 LIBFLAG = -L./ -lft
-SRCS = main.c \
-		ft_memset.c \
+SRCS = ft_memset.c \
 		ft_bzero.c \
 		ft_memcpy.c \
 		ft_memccpy.c \
@@ -50,10 +49,11 @@ OBJS = $(SRCS:.c=.o)
 all:  $(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) -o $@ $^
+			ar rc $@ $^
+			ranlib $@
 
 %.o:		%.c
-			gcc -o $@ -c $^
+			$(CC) $(FLAGS) -o $@ -c $^
 
 clean:
 			@rm -rf $(OBJS)
@@ -63,3 +63,5 @@ fclean:	clean
 			@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re all

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	is_signed(const char *str)
+static int	is_signed(const char *str)
 {
 	int index;
 

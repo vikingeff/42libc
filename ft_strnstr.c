@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	//int	size_s1;
 	size_t	size_s2;
 	size_t	index;
-	ft_putstr("ft_strnstr");
+	//ft_putstr("ft_strnstr");
 	loop = 0;
 	index = 0;
 	//size_s1 = ft_strlen(s1);
