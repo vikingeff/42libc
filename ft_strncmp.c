@@ -11,28 +11,51 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	index;
 	ft_putstr("ft_strncmp");
 	index = 0;
-	if (n != 0)
+	if (n != 0 && *s1 != '\0' && *s2 != '\0')
 	{
 		while(index < n)
 		{
 			if (*(s1 + index) == *(s2 + index))
 				index++;
 			else
-				break;
+				return (*(s1 + index) - *(s2 + index));
 		}
 	}
-	/*if ((*s1 - *s2) < 0)
+	return (0);
+	if ((*s1 - *s2) < 0)
 		result = -1;
 	else if ((*s1 - *s2) > 0)
 		result = 1;
 	else
 		result = 0;
-	n++;*/
-	return (*(s1 + index) - *(s2 + index));
+	n++;
+
+}*/
+
+#include "libft.h"
+
+int     ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+        int     result;
+        ft_putstr("ft_strncmp");
+        result = 0;
+        while((*s1 != '\0' && *s2 != '\0') && ((*s1 - *s2) == 0))
+        {
+                s1++;
+                s2++;
+        }
+        if ((*s1 - *s2) < 0)
+                result = -1;
+        else if ((*s1 - *s2) > 0)
+                result = 1;
+        else
+                result = 0;
+        n++;
+        return (result);
 }

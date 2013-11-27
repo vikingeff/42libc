@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 char	*ft_strstr(const char *s1, const char *s2)
 {
 	int	loop;
@@ -38,4 +38,24 @@ char	*ft_strstr(const char *s1, const char *s2)
 	if (loop == size_s1 && index != size_s2)
 		return (NULL);
 	return ((char *)s1 + loop - size_s2 + 1);
+}*/
+char	*ft_strstr(const char *str, const char *target)
+{
+	char *p1 = (char*)str;
+	if (!*target)
+	  	return (p1);
+	  while (*p1)
+	  {
+	    char *p1Begin = p1;
+	    char *p2 = (char*)target;
+	    while (*p1 && *p2 && *p1 == *p2)
+	    {
+	      p1++;
+	      p2++;
+	    }
+	    if (!*p2)
+	      return p1Begin;
+	    p1 = p1Begin + 1;
+	  }
+	  return (NULL);
 }

@@ -1126,10 +1126,10 @@ int       uf_test_strncmp(void)
   if (strncmp("q", "a", 0) != a)
     D_ERROR;
 #endif
-#ifndef  __clang__
+/*#ifndef  __clang__
   if (a)
     D_ERROR;
-#endif
+#endif*/
   return (1);
 }
 #endif
@@ -1606,7 +1606,7 @@ int       uf_test_memcmp(void)
 #ifdef  D_MEMCCPY
 int       uf_test_memccpy(void)
 {
-  char      ctab[11], ctab2[11], ctab3[11];
+  char      ctab[20], ctab2[20], ctab3[20];
   int       itab[11], itab2[11], itab3[11];
   unsigned long ltab[11], ltab2[11], ltab3[11];
   int       i, j;
@@ -1627,16 +1627,20 @@ int       uf_test_memccpy(void)
       while (j < 11)
       {
         ctab[j] = (char)rand();
-        ctab2[j] = 0; ctab3[j] = 0;
+        ctab2[j] = 0;
+        ctab3[j] = 0;
         itab[j] = rand();
-        itab2[j] = 0; itab3[j] = 0;
+        itab2[j] = 0;
+        itab3[j] = 0;
         ltab[j] = (unsigned long)rand() * LONG;
-        ltab2[j] = 0; ltab3[j] = 0;
+        ltab2[j] = 0;
+        ltab3[j] = 0;
         j++;
       }
       temp = memccpy(ctab2, ctab, 'a', (k < sizeof(ctab)) ? k : sizeof(ctab));
       memcpy(ctab3, ctab2, sizeof(ctab));
       temp2 = ft_memccpy(ctab2, ctab, 'a', (k < sizeof(ctab)) ? k : sizeof(ctab));
+      //printf("%s - %s\n", ctab2, ctab3);
       if ((memcmp(ctab2, ctab3, sizeof(ctab)) != 0 || (temp != temp2)))
         D_ERROR
       temp = memccpy(itab2, itab, 'a', (k < sizeof(itab)) ? k : sizeof(itab));

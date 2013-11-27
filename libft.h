@@ -33,7 +33,8 @@ char	*ft_strncat(char *s1, const char *s2, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strstr(const char *s1, const char *s2);
+//char	*ft_strstr(const char *s1, const char *s2);
+char	*ft_strstr(const char *str, const char *target);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 int	ft_strcmp(const char *s1, const char *s2);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -70,6 +71,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-//static int	is_signed(const char *str);
+
 
 #endif
