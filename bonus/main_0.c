@@ -120,21 +120,21 @@ int         main(int argc, const char **argv)
  * // #define D_MEMSET
  * // D_ADD_TEST(...)
  */
-/*#define        D_MEMSET
+#define        D_MEMSET
         D_ADD_HCTEST(memset);
 #define        D_BZERO
         D_ADD_HCTEST(bzero);
 #define        D_MEMCPY
-        D_ADD_HCTEST(memcpy);*/
+        D_ADD_HCTEST(memcpy);
 #define        D_MEMCCPY
         D_ADD_HCTEST(memccpy);
-/*#define        D_MEMMOVE
+#define        D_MEMMOVE
         D_ADD_HCTEST(memmove);
 #define        D_MEMCHR
-        D_ADD_HCTEST(memchr);*/
+        D_ADD_HCTEST(memchr);
 #define        D_MEMCMP
         D_ADD_HCTEST(memcmp);
-/*#define        D_STRLEN
+#define        D_STRLEN
         D_ADD_TEST(strlen);
 #define        D_STRDUP
         D_ADD_TEST(strdup);
@@ -145,24 +145,24 @@ int         main(int argc, const char **argv)
 #define        D_STRCAT
         D_ADD_TEST(strcat);
 #define        D_STRNCAT
-        D_ADD_TEST(strncat);*/
+        D_ADD_TEST(strncat);
 #define        D_STRLCAT
         D_ADD_TEST(strlcat);
-/*#define        D_STRCHR
+#define        D_STRCHR
         D_ADD_TEST(strchr);
 #define        D_STRRCHR
-        D_ADD_TEST(strrchr);*/
+        D_ADD_TEST(strrchr);
 #define        D_STRSTR
         D_ADD_TEST(strstr);
 #define        D_STRNSTR
         D_ADD_TEST(strnstr);
-//#define        D_STRCMP
-  //      D_ADD_TEST(strcmp);
+#define        D_STRCMP
+       D_ADD_TEST(strcmp);
 #define        D_STRNCMP
         D_ADD_TEST(strncmp);
 #define        D_ATOI
         D_ADD_HCTEST(atoi);
-/*#define        D_ISALPHA
+#define        D_ISALPHA
         D_ADD_HCTEST(isalpha);
 #define        D_ISDIGIT
         D_ADD_HCTEST(isdigit);
@@ -175,7 +175,7 @@ int         main(int argc, const char **argv)
 #define        D_TOUPPER
         D_ADD_HCTEST(toupper);
 #define        D_TOLOWER
-        D_ADD_HCTEST(tolower);*/
+        D_ADD_HCTEST(tolower);
 
 /*#define        D_MEMALLOC_AND_DEL
         D_ADD_TEST(memalloc_and_del);
@@ -1076,10 +1076,6 @@ int       uf_test_atoi(void)
 }
 #endif
 
-/*
-** Don't be stupid ppl, be careful with this noob noob noob test
-*/
-
 #ifdef  D_STRNCMP
 int       uf_test_strncmp(void)
 {
@@ -1126,10 +1122,10 @@ int       uf_test_strncmp(void)
   if (strncmp("q", "a", 0) != a)
     D_ERROR;
 #endif
-/*#ifndef  __clang__
+#ifndef  __clang__
   if (a)
     D_ERROR;
-#endif*/
+#endif
   return (1);
 }
 #endif
@@ -1181,7 +1177,7 @@ int       uf_test_strnstr(void)
 {
   char    *str = "Hello les genw";
 
-
+//printf("%s - %s\n", strnstr(str, "o l", ft_strlen(str)-7),ft_strnstr(str, "o l", ft_strlen(str)-7));
   if (strnstr(str, "Hello", 6) != ft_strnstr(str, "Hello", 6))
     D_ERROR;
   if (strnstr(str, "Hello", 3) != ft_strnstr(str, "Hello", 3))
@@ -1606,7 +1602,7 @@ int       uf_test_memcmp(void)
 #ifdef  D_MEMCCPY
 int       uf_test_memccpy(void)
 {
-  char      ctab[20], ctab2[20], ctab3[20];
+  char      ctab[11], ctab2[11], ctab3[11];
   int       itab[11], itab2[11], itab3[11];
   unsigned long ltab[11], ltab2[11], ltab3[11];
   int       i, j;
@@ -1627,20 +1623,16 @@ int       uf_test_memccpy(void)
       while (j < 11)
       {
         ctab[j] = (char)rand();
-        ctab2[j] = 0;
-        ctab3[j] = 0;
+        ctab2[j] = 0; ctab3[j] = 0;
         itab[j] = rand();
-        itab2[j] = 0;
-        itab3[j] = 0;
+        itab2[j] = 0; itab3[j] = 0;
         ltab[j] = (unsigned long)rand() * LONG;
-        ltab2[j] = 0;
-        ltab3[j] = 0;
+        ltab2[j] = 0; ltab3[j] = 0;
         j++;
       }
       temp = memccpy(ctab2, ctab, 'a', (k < sizeof(ctab)) ? k : sizeof(ctab));
       memcpy(ctab3, ctab2, sizeof(ctab));
       temp2 = ft_memccpy(ctab2, ctab, 'a', (k < sizeof(ctab)) ? k : sizeof(ctab));
-      //printf("%s - %s\n", ctab2, ctab3);
       if ((memcmp(ctab2, ctab3, sizeof(ctab)) != 0 || (temp != temp2)))
         D_ERROR
       temp = memccpy(itab2, itab, 'a', (k < sizeof(itab)) ? k : sizeof(itab));
@@ -1657,6 +1649,7 @@ int       uf_test_memccpy(void)
     }
     ++k;
   }
+
   return (1);
 }
 #endif

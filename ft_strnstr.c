@@ -14,29 +14,24 @@
 #include <stdio.h>
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	loop;
-	//int	size_s1;
 	size_t	size_s2;
 	size_t	index;
-	//ft_putstr("ft_strnstr");
-	loop = 0;
+	char	*mini;
+	char	*mini_off;
+
 	index = 0;
-	//size_s1 = ft_strlen(s1);
 	size_s2 = ft_strlen(s2);
-	if (n == 0 || size_s2 > n)
-		return (NULL);
-	if (size_s2 == 0)
-		return ((char *)s1);
-	while ((loop < size_s2) && (index != n))
+	if (size_s2 != 0)
 	{
-		if (*(s1 + index) == *(s2 + loop))
-		{
-			index++;
-			loop++;
-		}
-		index++;
-		//if (loop == size_s2 || index == n)
-			//return (NULL);
+		if (n == 0 || size_s2 > n)
+			return (NULL);
+		mini = ft_strdup(s1);
+		*(mini + n) = '\0';
+		mini_off = ft_strstr(mini, s2);
+		if (mini_off == NULL)
+			return (NULL);
+		index = mini_off - mini;
+		return ((char*)(s1) + index);
 	}
-	return ((char *)s1 + (index - size_s2 - 1));
+	return ((char *)s1);
 }

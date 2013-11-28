@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 /*
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -42,20 +43,44 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int     ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-        int     result;
-        ft_putstr("ft_strncmp");
-        result = 0;
-        while((*s1 != '\0' && *s2 != '\0') && ((*s1 - *s2) == 0))
-        {
-                s1++;
-                s2++;
-        }
-        if ((*s1 - *s2) < 0)
-                result = -1;
-        else if ((*s1 - *s2) > 0)
-                result = 1;
-        else
-                result = 0;
-        n++;
-        return (result);
+    /*size_t	index;
+    unsigned char	*src;
+    unsigned char	*find;
+    int	test;
+
+    index = 0;
+    test = 0;
+    src = (unsigned char *)s1;
+    find = (unsigned char *)s2;
+    if (n == 0)
+		return (0);
+	while (n != 0)
+	{
+		//printf("%c - %c\n", *(src + index), *(find + index));
+		if (*(src + index) == 0)
+			break;
+		test = *(src + index) - *(find + index);
+		//printf("%d\n", test);
+		if (test != 0)
+			return (test);
+		index++;
+		n--;
+	}
+	return (0);*/
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
+
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	i = 0;
+	while (str1[i] && str2[i] && (i < n))
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	if (i == n)
+		return (0);
+	return (str1[i] - str2[i]);
 }
