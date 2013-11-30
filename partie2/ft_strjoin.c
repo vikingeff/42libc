@@ -15,7 +15,28 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-
-	str = "Hello";
+  size_t  size_join;
+  size_t  loop;
+    
+  size_join = ft_strlen(s1) + ft_strlen(s2) + 1;
+  loop = 0;
+	str = ft_memalloc(size_join);
+  if (str == NULL)
+    return (NULL);
+  size_join = 0;
+  while (loop < ft_strlen(s1))
+  {
+    *(str + size_join) = *(s1 + loop);
+    loop++;
+    size_join++;
+  }
+  loop = 0;
+  while (loop < ft_strlen(s2))
+  {
+    *(str + size_join) = *(s2 + loop);
+    loop++;
+    size_join++;
+  }
+  *(str + size_join) = '\0';
 	return (str);
 }

@@ -14,4 +14,10 @@
 
 void	*ft_memalloc(size_t size)
 {
+  void  *memptr;
+  
+  memptr = malloc(size);
+  if (memptr != NULL)
+    return(memptr);
+  return (NULL);
 }

@@ -14,4 +14,8 @@
 
 void	ft_strclr(char *s)
 {
+  size_t  size_s;
+
+  size_s = ft_strlen(s);
+  ft_memset(s, '\0', size_s);
 }

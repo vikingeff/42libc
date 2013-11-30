@@ -14,4 +14,8 @@
 
 void	ft_strdel(char **as)
 {
+  void  **ptr;
+
+  ptr = (void **)as;
+  ft_memdel(ptr);
 }
